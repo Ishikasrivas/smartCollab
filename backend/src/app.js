@@ -10,7 +10,10 @@ const columnRoutes = require('./routes/column');
 const taskRoutes = require('./routes/task');
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://smart-collab-snowy.vercel.app/',
+  credentials: true
+}));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use('/api/auth', authRoutes);

@@ -68,7 +68,8 @@ export default function Kanban() {
       }
       const token = localStorage.getItem('token') || ''
       try {
-        const res = await fetch(`http://localhost:5000/api/boards/${id}`, {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const res = await fetch(`${apiUrl}/api/boards/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (!res.ok) throw new Error('Board not found')
@@ -196,7 +197,8 @@ export default function Kanban() {
     setColumns(newColumns);
     // Update backend
     const token = localStorage.getItem('token') || '';
-    await fetch(`http://localhost:5000/api/tasks/${task._id}/move`, {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    await fetch(`${apiUrl}/api/tasks/${task._id}/move`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -218,7 +220,8 @@ export default function Kanban() {
     setActionLoading(true)
     const token = localStorage.getItem('token') || ''
     try {
-      const res = await fetch(`http://localhost:5000/api/columns/${id}/columns`, {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/columns/${id}/columns`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -242,7 +245,8 @@ export default function Kanban() {
     setActionLoading(true)
     const token = localStorage.getItem('token') || ''
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/${taskColId}/tasks`, {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/tasks/${taskColId}/tasks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -266,7 +270,8 @@ export default function Kanban() {
     setActionLoading(true)
     const token = localStorage.getItem('token') || ''
     try {
-      const res = await fetch(`http://localhost:5000/api/columns/columns/${editColId}`, {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/columns/columns/${editColId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -288,7 +293,8 @@ export default function Kanban() {
     setActionLoading(true)
     const token = localStorage.getItem('token') || ''
     try {
-      const res = await fetch(`http://localhost:5000/api/columns/columns/${deleteColId}`, {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/columns/columns/${deleteColId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -306,7 +312,8 @@ export default function Kanban() {
     setActionLoading(true)
     const token = localStorage.getItem('token') || ''
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/tasks/${editTaskId}`, {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/tasks/tasks/${editTaskId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -328,7 +335,8 @@ export default function Kanban() {
     setActionLoading(true)
     const token = localStorage.getItem('token') || ''
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/tasks/${deleteTaskId}`, {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/tasks/tasks/${deleteTaskId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       })

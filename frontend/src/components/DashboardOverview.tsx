@@ -32,7 +32,8 @@ export default function DashboardOverview() {
     const fetchBoards = async () => {
       const token = localStorage.getItem('token') || ''
       try {
-        const res = await fetch('http://localhost:5000/api/boards', {
+        const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/boards`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (!res.ok) throw new Error('Failed to fetch boards')

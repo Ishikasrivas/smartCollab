@@ -18,7 +18,8 @@ export default function Sidebar() {
   useEffect(() => {
     const fetchBoards = async () => {
       const token = localStorage.getItem('token') || ''
-      const res = await fetch('http://localhost:5000/api/boards', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/boards`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       if (res.ok) {
@@ -34,7 +35,8 @@ export default function Sidebar() {
     const title = prompt('Enter board name:')
     if (!title) return
     const token = localStorage.getItem('token') || ''
-    const res = await fetch('http://localhost:5000/api/boards', {
+    const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${apiUrl}/api/boards`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
