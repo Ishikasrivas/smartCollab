@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <Toaster position="top-right" />
-      <UserMenu />
+      {localStorage.getItem('token') && <UserMenu />}
       <BackButton />
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
