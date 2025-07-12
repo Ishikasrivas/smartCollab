@@ -11,7 +11,10 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/smart-coll
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://smart-collab-snowy.vercel.app',
+    origin: [
+      'https://smart-collab-snowy.vercel.app',
+      'http://localhost:5174'
+    ],
     methods: ['GET', 'POST'],
   },
 });

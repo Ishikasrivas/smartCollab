@@ -11,7 +11,10 @@ const taskRoutes = require('./routes/task');
 
 // Middleware
 app.use(cors({
-  origin: 'https://smart-collab-snowy.vercel.app',
+  origin: [
+    'https://smart-collab-snowy.vercel.app',
+    'http://localhost:5174'
+  ],
   credentials: true
 }));
 app.use(express.json());
