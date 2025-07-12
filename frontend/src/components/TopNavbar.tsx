@@ -1,8 +1,16 @@
 import { FaBuilding, FaSearch, FaUserCircle, FaCog, FaSignOutAlt, FaUser, FaBars } from 'react-icons/fa'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function TopNavbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const navigate = useNavigate();
+  const name = localStorage.getItem('name') || 'User';
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    navigate('/login');
+  };
   return (
     <nav className="w-full h-16 bg-gray-900 flex items-center px-4 sm:px-8 shadow z-30 sticky top-0">
       {/* Hamburger for mobile */}
@@ -38,7 +46,7 @@ export default function TopNavbar({ onMenuClick }: { onMenuClick?: () => void })
           <div className="w-9 h-9 bg-blue-600 flex items-center justify-center rounded-full text-lg font-bold">
             <FaUser className="text-white" />
           </div>
-          <span className="hidden sm:inline font-semibold">Naman</span>
+          <span className="hidden sm:inline font-semibold">{name}</span>
           <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
         </button>
         {dropdownOpen && (
@@ -49,7 +57,7 @@ export default function TopNavbar({ onMenuClick }: { onMenuClick?: () => void })
             <button className="flex items-center w-full px-4 py-2 text-sm text-white hover:bg-gray-700">
               <FaCog className="mr-2" /> Settings
             </button>
-            <button className="flex items-center w-full px-4 py-2 text-sm text-red-400 hover:bg-gray-700 rounded-b-xl">
+            <button className="flex items-center w-full px-4 py-2 text-sm text-red-400 hover:bg-gray-700 rounded-b-xl" onClick={handleLogout}>
               <FaSignOutAlt className="mr-2" /> Logout
             </button>
           </div>

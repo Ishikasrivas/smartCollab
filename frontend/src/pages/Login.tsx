@@ -22,6 +22,9 @@ export default function Login() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.message || 'Login failed')
       localStorage.setItem('token', data.token)
+      if (data.user && data.user.name) {
+        localStorage.setItem('name', data.user.name);
+      }
       navigate('/dashboard')
     } catch (err: any) {
       setError(err.message)
