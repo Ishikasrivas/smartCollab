@@ -9,8 +9,6 @@ import BackButton from './components/BackButton'
 import { useEffect } from 'react'
 import { socket } from './socket'
 
-const websiteUrl = import.meta.env.VITE_WEBSITE_URL;
-
 function App() {
   useEffect(() => {
     // Join user room for notifications
